@@ -9,17 +9,17 @@ STYLE_LOSS=2.5e-1
 PRIMARY_LOSS=0.01
 IOU_LOSS=0.25 
 
-INPUT_SIZE=256
+INPUT_SIZE=512
 DATASET=CLWD
 NAME=slbr_v1
 # nohup python -u   main.py \
-CUDA_VISIBLE_DEVICES=1 python -u train.py \
+CUDA_VISIBLE_DEVICES=0 python -u train.py \
  --epochs 100 \
  --schedule 65 \
  --lr 1e-3 \
- --gpu_id 1 \
- --checkpoint /media/sda/Watermark \
- --dataset_dir /media/sda/datasets/Watermark/${DATASET} \
+ --gpu_id 0 \
+ --checkpoint /home/vuthede/site-projects/code/SLBR-Visible-Watermark-Removal \
+ --dataset_dir /home/vuthede/site-projects/code/WDNet/dataset/${DATASET} \
  --nets slbr  \
  --sltype vggx \
  --mask_mode ${MASK_MODE} \
@@ -33,7 +33,7 @@ CUDA_VISIBLE_DEVICES=1 python -u train.py \
  --models slbr \
   --input-size ${INPUT_SIZE} \
  --crop_size ${INPUT_SIZE} \
- --train-batch 8 \
+ --train-batch 2 \
  --test-batch 1 \
  --preprocess resize \
  --name ${NAME} \
